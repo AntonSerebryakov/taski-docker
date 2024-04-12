@@ -183,14 +183,18 @@ jobs:
     - name: Executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
-        host: $${{ secrets.HOST }}
-        username: $${{ secrets.USER }}
-        key: $${{ secrets.SSH_KEY }}
-        passphrase: $${{ secrets.SSH_PASSPHRASE }}
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
         # Параметр script передаёт в action appleboy/ssh-action команды,
         # которые нужно выполнить на сервере, 
         # с которым установлено соединение
         script: |
+          echo "HOST: ${{ secrets.HOST }}"
+          echo "USER: ${{ secrets.USER }}"
+          echo "SSH_KEY: ${{ secrets.SSH_KEY }}"
+          echo "SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}"
           cd taski
           sudo docker compose -f docker-compose.production.yml pull
           sudo docker compose -f docker-compose.production.yml down
