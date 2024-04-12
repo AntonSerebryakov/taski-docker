@@ -191,10 +191,6 @@ jobs:
         # которые нужно выполнить на сервере, 
         # с которым установлено соединение
         script: |
-          echo "HOST: ${{ secrets.HOST }}"
-          echo "USER: ${{ secrets.USER }}"
-          echo "SSH_KEY: ${{ secrets.SSH_KEY }}"
-          echo "SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}"
           cd taski
           sudo docker compose -f docker-compose.production.yml pull
           sudo docker compose -f docker-compose.production.yml down
