@@ -192,6 +192,13 @@ jobs:
         # которые нужно выполнить на сервере, 
         # с которым установлено соединение
         script: |
+          export host=${{ secrets.HOST }}
+          export username=${{ secrets.USER }}
+          export key=${{ secrets.SSH_KEY }}
+          export passphrase=${{ secrets.SSH_PASSPHRASE }}
+          
+          
+          
           cd taski
           sudo docker compose -f docker-compose.production.yml pull
           sudo docker compose -f docker-compose.production.yml down
