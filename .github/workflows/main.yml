@@ -190,4 +190,4 @@ jobs:
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
           cd taski
-          
+          ls
