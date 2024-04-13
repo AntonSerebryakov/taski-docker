@@ -190,4 +190,4 @@ jobs:
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
           cd taski
-          ls
+          sudo docker compose -f docker-compose.production.yml pull
