@@ -121,6 +121,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: frontend_tests
     timeout-minutes: 2
+    
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
