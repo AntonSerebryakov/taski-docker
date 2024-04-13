@@ -182,13 +182,13 @@ jobs:
         target: "taski"
     
     - name: Executing remote commands to deploy
-  run: |
-    ssh -i ${{ secrets.SSH_KEY }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.USER }}@${{ secrets.HOST }} '
-      cd taski &&
-      sudo docker compose -f docker-compose.production.yml pull &&
-      sudo docker compose -f docker-compose.production.yml down &&
-      sudo docker compose -f docker-compose.production.yml up -d &&
-      sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate &&
-      sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic &&
-      sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
-    '
+        run: |
+          ssh -i ${{ secrets.SSH_KEY }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.USER }}@${{ secrets.HOST }} '
+            cd taski &&
+            sudo docker compose -f docker-compose.production.yml pull &&
+            sudo docker compose -f docker-compose.production.yml down &&
+            sudo docker compose -f docker-compose.production.yml up -d &&
+            sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate &&
+            sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic &&
+            sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
+          '
